@@ -16,17 +16,28 @@ public class GameController : MonoBehaviour
             {
                 case TouchPhase.Moved:
                     lineRenderer.enabled = true;
-                    Vector3[] arr = new Vector3[2];
-                    arr[0] = new Vector3(Camera.main.ScreenToWorldPoint(touch.position).x, Camera.main.ScreenToWorldPoint(touch.position).y);
-                    arr[1] = mainBall.transform.position;
-                    lineRenderer.SetPositions(arr);
+                    RaycastHit2D hit = Physics2D.CircleCast(mainBall.transform.position, mainBall.transform.localScale.x, new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x - mainBall.transform.position.x, Camera.main.ScreenToWorldPoint(touch.position).y - mainBall.transform.position.y));
+                    //RaycastHit2D hit = Physics2D.Raycast(mainBall.transform.position, new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x - mainBall.transform.position.x, Camera.main.ScreenToWorldPoint(touch.position).y - mainBall.transform.position.y));
+                    if (hit.collider)
+                    {
+                        //Debug.Log(hit.transform.name);
+                        if (hit.transform.tag == "Ball")
+                        {
+                            lineRenderer.positionCount = 3;
+                            lineRenderer.SetPositions(new Vector3[] { mainBall.transform.position, hit.point, hit.transform.position * 1.5f});
+                        }
+                        else
+                        {
+                            lineRenderer.positionCount = 2;
+                            lineRenderer.SetPositions(new Vector3[] { hit.point, mainBall.transform.position });
+                        }
+                    }
                     break;
                 case TouchPhase.Ended:
                     lineRenderer.enabled = false;
                     mainBall.AddForce(new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x - mainBall.transform.position.x, Camera.main.ScreenToWorldPoint(touch.position).y - mainBall.transform.position.y), ForceMode2D.Impulse);
                     break;
             }
-            //if (touch.phase == TouchPhase.Ended) mainBall.AddForce(Camera.main.ScreenToWorldPoint(touch.position) - mainBall.transform.position, ForceMode2D.Impulse);
         }
     }
 

@@ -1714,7 +1714,7 @@ GameObject:
   - component: {fileID: 1079367782}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1823,7 +1823,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.25
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2093,7 +2093,7 @@ GameObject:
   - component: {fileID: 1419891938}
   - component: {fileID: 1419891941}
   - component: {fileID: 1419891940}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainBall
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2160,7 +2160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419891937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1079367780}

@@ -17,10 +17,8 @@ public class GameController : MonoBehaviour
                 case TouchPhase.Moved:
                     lineRenderer.enabled = true;
                     RaycastHit2D hit = Physics2D.CircleCast(mainBall.transform.position, 0.1f, new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x - mainBall.transform.position.x, Camera.main.ScreenToWorldPoint(touch.position).y - mainBall.transform.position.y));
-                    //RaycastHit2D hit = Physics2D.Raycast(mainBall.transform.position, new Vector2(Camera.main.ScreenToWorldPoint(touch.position).x - mainBall.transform.position.x, Camera.main.ScreenToWorldPoint(touch.position).y - mainBall.transform.position.y));
                     if (hit.collider)
                     {
-                        //Debug.Log(hit.transform.name);
                         if (hit.transform.tag == "Ball")
                         {
                             lineRenderer.positionCount = 3;
